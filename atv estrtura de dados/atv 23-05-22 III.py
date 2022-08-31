@@ -3,7 +3,7 @@ Makalister Andrade da Silva - UTF8 - 23-05-22
 
 
 
-"""
+
 
 # 1.1 – Importando a biblioteca numpy
 import numpy as np 
@@ -192,4 +192,19 @@ class Lista_Encadeada:
                     anterior.proximo = atual.proximo
                 return atualiza
 
-    
+
+"""
+
+# 01 - Criando classes - atributos de instâncias - lâmpada
+
+class Lampada:
+    def __ini__(self, voltagem, cor, tipo, lumens, ligada):
+        self.voltagem = voltagem
+        self.cor = cor
+        self.tipo = tipo
+        self.lumens = lumens
+        self.ligada = False
+
+
+# 02 - Conta bancária tipo poupança
+class ContaPoupanca:
