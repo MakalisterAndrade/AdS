@@ -17,6 +17,7 @@ class SegundoApp(App):
     def build(self):
         Config.set('graphics', 'resizable', False)
         tela = TelaPrincipal()
+        self.title = 'Outros Componentes Kivy'
         tela.size = 200, 210
         return tela
 
