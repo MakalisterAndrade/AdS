@@ -126,3 +126,28 @@
                 root.verificarEscolhas()
 
     RelativeLayout:
+        canvas:
+            Color:
+                rgba: (.3,.25, .52, .4)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'Cor Preferida'
+            color: 'black'
+            pos_hint: {'center': (.5,.5)}
+
+        Spinner:
+            id: spCor
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center': (.5,.5)}
+            text: 'Escolha'
+            values: ('Azul', 'Vermelho', 'Verde', 'Preto', 'Cinza')
+            on_text:
+                root.escolhaSpinner()
+
+
+
+
