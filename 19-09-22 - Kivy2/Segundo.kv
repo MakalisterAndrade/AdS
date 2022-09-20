@@ -2,6 +2,19 @@
     cols: 1
     rows: 5
 
+    #Variáveis Globais
+    fem: chkFem
+    mas: chkMas
+    other: chkOut
+    h_games: chkGames
+    h_ler: chkLer
+    h_sport: chkEsportes
+    h_desen: chkDesenhar
+    btt: btVer
+    corpref: spCor
+    mensagem: txtMen
+
+
     canvas:
         Color:
             rgba: (.8,.92, .90, 1)
@@ -117,7 +130,7 @@
 
     RelativeLayout:
         Button:
-            id: brVer
+            id: btVer
             size_hint: None, None
             size: 200, 50
             pos_hint: {'center':(.5, .5)}
@@ -147,6 +160,14 @@
             values: ('Azul', 'Vermelho', 'Verde', 'Preto', 'Cinza')
             on_text:
                 root.escolhaSpinner()
+
+    RelativeLayout:
+        TextInput:
+            id: txtMen
+            color: 'black'
+            font_size: '12sp'
+            readonly: True
+
 
 
 
