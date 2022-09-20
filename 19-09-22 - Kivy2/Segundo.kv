@@ -30,6 +30,7 @@
             pos_hint:{"left":1,"left":0.5}
             size_hint: [0.3, 0.35]
             color: 'black'
+            text: "Feminino"
         Label:
             pos_hint:{"left":0.5,"left":0.5}
             size_hint: [0.3, 0.35]
@@ -50,6 +51,7 @@
             pos_hint:{"left":1.5,"left":1}
             size_hint: [0.2, 0.25]
             color: 'black'
+            text: "Masculino"
 
         Label:
             pos_hint:{"left":0,"left":1.5}
@@ -63,6 +65,7 @@
             pos_hint:{"left":0.8,"left":1.5}
             size_hint: [0.1, 0.15]
             color: 'black'
+            text: "Outros"
 
 
     GridLayout:
@@ -79,8 +82,9 @@
         CheckBox:
             id: chkGames
             color: 'black'
-            #on_active:
-            #    root.verificarEscolhas()
+            on_active:
+                root.verificarEscolhas()
+            text: 'Games'
 
         Label:
             font_size: '14sp'
@@ -92,8 +96,9 @@
         CheckBox:
             id: chkLer
             color: 'black'
-            #on_active:
-            #    root.verificarEscolhas()
+            on_active:
+                root.verificarEscolhas()
+            text: 'Ler'
 
         Label:
             font_size: '14sp'
@@ -105,8 +110,9 @@
         CheckBox:
             id: chkEsportes
             color: 'black'
-            #on_active:
-            #    root.verificarEscolhas()
+            on_active:
+                root.verificarEscolhas()
+            text: 'Esportes'
 
         Label:
             font_size: '14sp'
@@ -118,8 +124,9 @@
         CheckBox:
             id: chkDesenhar
             color: 'black'
-            #on_active:
-            #    root.verificarEscolhas()
+            on_active:
+                root.verificarEscolhas()
+            text: 'Desenhar'
 
         Label:
             font_size: '14sp'
