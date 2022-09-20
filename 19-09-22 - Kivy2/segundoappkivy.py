@@ -23,17 +23,17 @@ class TelaPrincipal(GridLayout):
     def verificarEscolhas(self):
         self.mensagem.text = ''
         sexos = [self.fem, self.mas, self.other]
-        self.mensagem.text = 'Sexo\n'
+        self.mensagem.text = 'Sexo: '
         for s in sexos:
             if s.active:
                 self.mensagem.text += s.text
-        hobbies = [self.h_games, self.h_ler, self.h_desen,self.h_sport]
-        self.mensagem.text += '='*15 + '\n'
+
+        hobbies = [self.h_ler, self.h_games, self.h_sport,self.h_desen]
+        self.mensagem.text += '\n' + '='*112 + '\n' + 'Hobbies: ' + '\n'
         for h in hobbies:
             if h.active:
-                self.mensagem.text += h.text + '\n'
-
-        self.mensagem.text += '='*15 + '\n'
+                self.mensagem.text += h.text +'\n'
+        self.mensagem.text +=  '='*112 + '\n'
 
 
     def escolhaSpinner(self):
