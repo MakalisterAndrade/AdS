@@ -8,5 +8,18 @@ from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from kivy.config import Config
 
-class TelaPrincipal(GridLayout):
+class Tela(GridLayout):
     pass
+
+
+class ScriptApp(App):
+
+    def build(self):
+        Config.set('graphics', 'resizable', False)
+        tela = Tela()
+        self.title = 'App de leitura e cálculo de gastos de energia'
+        tela.size = 200, 210
+        return tela
+
+if __name__ == "__main__":
+    ScriptApp().run()
