@@ -16,7 +16,7 @@ class ScriptApp(App):
 
     def build(self):
         Config.set('graphics', 'resizable', False)
-        Config.set('graphics', 'width', '360')
+        Config.set('graphics', 'width', '380')
         Config.set('graphics', 'height', '300')
         tela = Tela()
         self.title = 'App de leitura e cálculo de gastos de energia'

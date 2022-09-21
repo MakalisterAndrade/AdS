@@ -1,14 +1,12 @@
 <Tela>:
-    cols: 2
-    rows: 3
-
 
     #Variáveis Globais
     atual: leitAtu
     ant: leitAnt
     cons: consumo
     check: chkBaixa
-
+    bt1: btnovo
+    bt2: btcalc
     canvas:
         Color:
             rgba: (1, 1, 1, 1)
@@ -19,33 +17,38 @@
 
 
     GridLayout:
+        pos: self.pos
+        size: root.size
         rows: 5
         cols: 2
+        row_force_default: True
+        row_default_height: 50
+
         Label:
-            pos_hint: {'x': 1, 'y': 2}
-            size_hint: [1,None]
-            height: 30
+            size_hint: 2,None
+            height: 40
             font_size: '14sp'
             color: [0,0,0,1]
             text: "Leitura anterior: "
         TextInput:
-            size_hint: 1, None
+            size_hint: 0, None
             height: 30
             id: leitAnt
             multiline: False
         Label:
-            size_hint: 1, None
-            height: 25
+            size_hint: 0, None
+            height: 30
             font_size: '14sp'
             color: [0,0,0,1]
-            text: 'Leitura Atual: '
+            text: 'Leitura atual: '
         TextInput:
-            size_hint: (1, None)
+            size_hint: 0, None
             height: 30
             id: leitAtu
             multiline: False
         Label:
-            size_hint: 1, None
+            size_hint: 0, None
+            width: 30
             height: 30
             font_size: '14sp'
             color: [0,0,0,1]
@@ -53,20 +56,39 @@
         TextInput:
             readonly: True
             cursor_blink: False
-            size_hint: 1, None
+            size_hint: 0, None
             height: 30
             id: consumo
             multiline: False
+
         CheckBox:
-            size_hint: None, None
             id: chkBaixa
             color: 'black'
             #on_active:
             #    root.verificarEscolhas()
             text: 'Baixa Renda'
         Label:
-            size_hint: None, None
             font_size: '14sp'
             color: 'black'
             text: 'Baixa Renda'
-            valign: 'center'
+
+        Button:
+            color: 'white'
+            background_color: 'blue'
+            id: btcalc
+            size_hint: None, None
+            size: 80, 20
+            text: 'Calcular'
+            on_press:
+                root.Calcular()
+
+        Button:
+            color: 'white'
+            background_color: 'blue'
+            id: btnovo
+            size_hint: None, None
+            size: 80, 20
+            text: 'Novo'
+            on_press:
+                root.Novo()
+
