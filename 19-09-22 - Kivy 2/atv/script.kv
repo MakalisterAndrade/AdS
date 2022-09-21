@@ -4,6 +4,10 @@
 
 
     #Variáveis Globais
+    atual: leitAtu
+    ant: leitAnt
+    cons: consumo
+    check: chkBaixa
 
     canvas:
         Color:
@@ -15,25 +19,23 @@
 
 
     GridLayout:
-        rows: 2
+        rows: 5
         cols: 2
         Label:
-            pos_hint: {'x': 0.5, 'y': 0.1}
-            size_hint: [0, 0]
+            pos_hint: {'x': 1, 'y': 2}
+            size_hint: [1,None]
             height: 30
             font_size: '14sp'
             color: [0,0,0,1]
             text: "Leitura anterior: "
-            valign: 'bottom'
-            halign: 'right'
         TextInput:
-            size_hint: 2, None
+            size_hint: 1, None
             height: 30
             id: leitAnt
             multiline: False
         Label:
             size_hint: 1, None
-            height: 30
+            height: 25
             font_size: '14sp'
             color: [0,0,0,1]
             text: 'Leitura Atual: '
@@ -42,3 +44,29 @@
             height: 30
             id: leitAtu
             multiline: False
+        Label:
+            size_hint: 1, None
+            height: 30
+            font_size: '14sp'
+            color: [0,0,0,1]
+            text: 'Consumo: '
+        TextInput:
+            readonly: True
+            cursor_blink: False
+            size_hint: 1, None
+            height: 30
+            id: consumo
+            multiline: False
+        CheckBox:
+            size_hint: None, None
+            id: chkBaixa
+            color: 'black'
+            #on_active:
+            #    root.verificarEscolhas()
+            text: 'Baixa Renda'
+        Label:
+            size_hint: None, None
+            font_size: '14sp'
+            color: 'black'
+            text: 'Baixa Renda'
+            valign: 'center'
