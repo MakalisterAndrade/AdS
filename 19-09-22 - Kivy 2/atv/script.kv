@@ -1,0 +1,44 @@
+<Tela>:
+    cols: 2
+    rows: 3
+
+
+    #Variáveis Globais
+
+    canvas:
+        Color:
+            rgba: (1, 1, 1, 1)
+
+        Rectangle:
+            pos: root.pos
+            size: root.size
+
+
+    GridLayout:
+        rows: 2
+        cols: 2
+        Label:
+            pos_hint: {'x': 0.5, 'y': 0.1}
+            size_hint: [0, 0]
+            height: 30
+            font_size: '14sp'
+            color: [0,0,0,1]
+            text: "Leitura anterior: "
+            valign: 'bottom'
+            halign: 'right'
+        TextInput:
+            size_hint: 2, None
+            height: 30
+            id: leitAnt
+            multiline: False
+        Label:
+            size_hint: 1, None
+            height: 30
+            font_size: '14sp'
+            color: [0,0,0,1]
+            text: 'Leitura Atual: '
+        TextInput:
+            size_hint: (1, None)
+            height: 30
+            id: leitAtu
+            multiline: False

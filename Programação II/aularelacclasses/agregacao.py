@@ -79,4 +79,4 @@ class Carrinho:
         self.exibeCarrinho()
         print(f'Total da compra: R$ {total:.2f}')
         #tot = round(total)
-        #rint(f'Total da compra: R$ {tot:.2f}')
+        #print(f'Total da compra: R$ {tot:.2f}')
