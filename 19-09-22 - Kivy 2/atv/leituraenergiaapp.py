@@ -1,3 +1,6 @@
+from tabnanny import check
+from typing_extensions import Self
+from unittest import result
 import kivy
 kivy.require('2.1.0')
 
@@ -9,9 +12,24 @@ from kivy.uix.label import Label
 from kivy.config import Config
 
 class Tela(GridLayout):
-    pass
+    atual = ObjectProperty(None)
+    ant = ObjectProperty(None)
+    cons = ObjectProperty(None)
+    check = ObjectProperty(None)
+    bt1 = ObjectProperty(None)
+    bt2 = ObjectProperty(None)
 
-
+    def Calcular(self):
+        try:
+            valor1 = int(self.atual.text)
+            valor2 = int(self.ant.text)
+            soma = valor1 + valor2
+            self.ids.lbResult.text = str(soma)
+        except (TypeError, ValueError):
+            lblErro = Label(text='Verifique os valores')
+            popup = Popup(title='ERRO 404', content=lblErro, auto_dismiss = True)
+            popup.size_hint = (0.75, 0.4)
+            popup.open()
 class ScriptApp(App):
 
     def build(self):
