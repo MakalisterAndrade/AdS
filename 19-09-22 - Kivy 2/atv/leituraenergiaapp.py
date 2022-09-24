@@ -1,6 +1,3 @@
-from tabnanny import check
-from typing_extensions import Self
-from unittest import result
 import kivy
 kivy.require('2.1.0')
 
