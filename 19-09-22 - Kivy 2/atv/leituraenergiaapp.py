@@ -1,4 +1,3 @@
-
 import kivy
 kivy.require('2.1.0')
 
@@ -19,15 +18,27 @@ class Tela(GridLayout):
 
     def Calcular(self):
         try:
+            check = self.check
             valor1 = int(self.atual.text)
             valor2 = int(self.ant.text)
-            soma = valor1 + valor2
-            self.ids.lbResult.text = str(soma)
+            if check.active:
+                soma = valor1 + valor2 * 0.37
+                self.cons.text = "R$ {:.2f}".format(soma).replace('.', ',')
+            else:
+                soma = valor1 + valor2 * 0.62
+                self.cons.text = "R$ {:.2f}".format(soma).replace('.', ',')
+
         except (TypeError, ValueError):
             lblErro = Label(text='Verifique os valores')
             popup = Popup(title='ERRO 404', content=lblErro, auto_dismiss = True)
             popup.size_hint = (0.75, 0.4)
             popup.open()
+
+    def Novo(self):
+        self.atual.text, self.ant.text, self.cons.text = '', '', ''
+        self.check.active = False
+        return Tela()
+
 class ScriptApp(App):
 
     def build(self):
