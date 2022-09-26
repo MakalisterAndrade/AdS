@@ -33,6 +33,7 @@ class Tela(GridLayout):
             popup = Popup(title='ERRO 404', content=lblErro, auto_dismiss = True)
             popup.size_hint = (0.75, 0.4)
             popup.open()
+            return self.Novo()
 
     def Novo(self):
         self.atual.text, self.ant.text, self.cons.text = '', '', ''

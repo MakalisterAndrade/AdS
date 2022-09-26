@@ -43,6 +43,7 @@ class TelaPrincipal(GridLayout):
         popup.size_hint = .75, 0.3
         popup.open()
 
+
 class SegundoApp(App):
 
     def build(self):
