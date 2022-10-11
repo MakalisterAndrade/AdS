@@ -1,0 +1,180 @@
+<TelaPrincipal>:
+    cols: 1
+    rows: 5
+
+    #Variáveis Globais
+    fem: chkFem
+    mas: chkMas
+    other: chkOut
+    h_games: chkGames
+    h_ler: chkLer
+    h_sport: chkEsportes
+    h_desen: chkDesenhar
+    btt: btVer
+    corpref: spCor
+    mensagem: txtMen
+
+
+    canvas:
+        Color:
+            rgba: (.8,.92, .90, 1)
+
+        Rectangle:
+            pos: root.pos
+            size: root.size
+
+    RelativeLayout:
+        CheckBox:
+            id: chkFem
+            group: 'sexo'
+            pos_hint:{"left":2.5,"left":1.5}
+            size_hint: [0.18, 0.8]
+            color: 'black'
+            text: "Feminino"
+        Label:
+            pos_hint:{"left":2,"left":1.5}
+            size_hint: [0.07, 0.8]
+            font_size: '14sp'
+            color: [0,0,0,1]
+            text: "Feminino"
+
+
+        Label:
+            pos_hint:{"left":1,"left":1.5}
+            size_hint: [0.08, 0.49]
+            font_size: '14sp'
+            color: [0,0,0,1]
+            text: "Masculino"
+        CheckBox:
+            id: chkMas
+            group: 'sexo'
+            pos_hint:{"left":1.5,"left":1.5}
+            size_hint: [0.18, 0.49]
+            color: 'black'
+            text: "Masculino"
+
+        Label:
+            pos_hint:{"left":0,"left":1.5}
+            size_hint: [0.05, 0.13]
+            font_size: '14sp'
+            color: [0,0,0,1]
+            text: "Outros"
+        CheckBox:
+            id: chkOut
+            group: 'sexo'
+            pos_hint:{"left":0.5,"left":1.5}
+            size_hint: [0.18, 0.13]
+            color: 'black'
+            text: "Outros"
+
+
+    GridLayout:
+        cols: 8
+        rows: 1
+
+        canvas:
+            Color:
+                rgba: (.8, .8, .75, .7)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        CheckBox:
+            id: chkGames
+            color: 'black'
+            on_active:
+                root.verificarEscolhas()
+            text: 'Games'
+
+        Label:
+            font_size: '14sp'
+            color: 'black'
+            text: 'Games'
+            halign: 'left'
+            valign: 'center'
+
+        CheckBox:
+            id: chkLer
+            color: 'black'
+            on_active:
+                root.verificarEscolhas()
+            text: 'Ler'
+
+        Label:
+            font_size: '14sp'
+            color: 'black'
+            text: 'Ler'
+            halign: 'left'
+            valign: 'center'
+
+        CheckBox:
+            id: chkEsportes
+            color: 'black'
+            on_active:
+                root.verificarEscolhas()
+            text: 'Esportes'
+
+        Label:
+            font_size: '14sp'
+            color: 'black'
+            text: 'Esportes'
+            halign: 'left'
+            valign: 'center'
+
+        CheckBox:
+            id: chkDesenhar
+            color: 'black'
+            on_active:
+                root.verificarEscolhas()
+            text: 'Desenhar'
+
+        Label:
+            font_size: '14sp'
+            color: 'black'
+            text: 'Desenhar'
+            halign: 'left'
+            valign: 'center'
+
+    RelativeLayout:
+        Button:
+            color: 'white'
+            background_color: 'red'
+            id: btVer
+            size_hint: None, None
+            size: 100, 50
+            pos_hint: {'center':(.5, .5)}
+            text: 'Verificar'
+            on_press:
+                root.verificarEscolhas()
+
+    RelativeLayout:
+        canvas:
+            Color:
+                rgba: (.3,.25, .52, .4)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'Cor Preferida'
+            color: 'black'
+            pos_hint: {'center': (.5,.5)}
+
+        Spinner:
+            id: spCor
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center': (.5,.5)}
+            text: 'Escolha'
+            values: ('Azul', 'Vermelho', 'Verde', 'Preto', 'Cinza')
+            on_text:
+                root.escolhaSpinner()
+
+    RelativeLayout:
+        TextInput:
+            id: txtMen
+            color: 'black'
+            font_size: '12sp'
+            readonly: True
+
+
