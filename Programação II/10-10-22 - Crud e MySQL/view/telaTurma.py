@@ -3,64 +3,67 @@ from kivy.uix.popup import Popup
 
 from control.turmaCtrl import TurmaCtrl
 
+
 class ViewTurma:
+
     def __init__(self, gerencTela):
         self._gerencTela = gerencTela
 
     def cadAtualTurma(self):
-        result = ''
+        result = ""
         try:
             tela = self._gerencTela.get_screen("CadastroTurma")
             idTurma = tela.ids.lblId.text
             nome = tela.ids.inputNome.text
-            turno = self.verTurno(tela)
+            turno = self._verTurno(tela)
             control = TurmaCtrl()
             if tela.ids.btCadAtual.text == "Excluir":
                 result = control.excluirTurma(idTurma)
             else:
-                result = control.salvarAtualizarTurma(id=idTurma, nome=nome,turno=turno)
-                self._popJanela(result)
-                self._limparTela(tela)
+                result = control.salvarAtualizarTurma(id=idTurma, nome=nome, turno=turno)
+
+            self._popJanela(result)
+            self._limparTela(tela)
         except Exception as e:
             print(e)
             self._popJanela(f"Não foi possível {tela.ids.btCadAtual.text} a turma!!!")
 
-    def _limparTelaListar(self,tela):
+    def _limparTelaListar(self, tela):
         cabecalho = [
-            tela.ids.colId,
-            tela.ids.colNome,
-            tela.ids.colTurno,
-            tela.ids.lblAtual,
-            tela.ids.lblExcluir
+            tela.colid,
+            tela.colnome,
+            tela.colturno,
+            tela.colatual,
+            tela.colexcluir
         ]
-        tela.ids.listaTurmas.clear_widgets()
+        tela.gridlistar.clear_widgets()
         for c in cabecalho:
-            tela.ids.listaTurmas.add_widget(c)
+            tela.gridlistar.add_widget(c)
 
-    def buscaTurmas (self):
+    def buscaTurmas(self):
         control = TurmaCtrl()
         tela = self._gerencTela.get_screen("ListarTurmas")
-        idPesq = tela.ids.inputId.text
+        idPesq = tela.inputid.text
         resultado = control.buscarTurma(id=idPesq)
         self._limparTelaListar(tela)
         for res in resultado:
             for r in res:
                 if r.text == "Atualizar" or r.text == "Excluir":
-                    r.bind(on_release = self.montarTelaAt)
-                tela.ids.listaTurmas.add_widget(r)
+                    r.bind(on_release=self.montarTelaAt)
+                tela.gridlistar.add_widget(r)
 
-    def montarTelaAt(self,botao):
-        turma=[]
-        if botao.id:
+    def montarTelaAt(self, botao):
+        turma = []
+        if hasattr(botao, 'id'):
             id = str(botao.id).replace("bt", "")
             control = TurmaCtrl()
             turma = control.buscarTurma(id=id)
-        telaCad = self.gerencTela.get_screen("CadastroTurma")
+        telaCad = self._gerencTela.get_screen("CadastroTurma")
         for t in turma:
             telaCad.ids.lblId.text = t[0].text
             telaCad.ids.inputNome.text = t[1].text
             if t[2] != "":
-                self.marcarTurno(t[2].text, telaCad)
+                self._marcarTurno(t[2].text, telaCad)
         telaCad.ids.btCadAtual.text = botao.text
         self._limparTelaListar(self._gerencTela.get_screen("ListarTurmas"))
         self._gerencTela.telaCadastroTurma()
@@ -74,10 +77,11 @@ class ViewTurma:
         tela.ids.chkIntegral.active = False
         tela.ids.btCadAtual.text = "Cadastrar"
 
-    def _popJanela(self, texto=""):
-        popup = Popup(title='Informação', content=Label(text=texto),auto_dismiss = True)
+    def _popJanela(self, texto=''):
+        popup = Popup(title='Informação', content=Label(text=texto), auto_dismiss=True)
         popup.size_hint = (0.98, 0.4)
         popup.open()
+
     def _verTurno(self, tela):
         turno = ""
         if tela.ids.chkMatutino.active:
@@ -89,7 +93,6 @@ class ViewTurma:
         elif tela.ids.chkIntegral.active:
             turno = tela.ids.chkIntegral.value
         return turno
-
 
     def _marcarTurno(self, texto, tela):
         if tela.ids.chkMatutino.value == texto:

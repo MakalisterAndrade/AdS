@@ -3,12 +3,13 @@ from kivy.uix.label import Label
 from model.turmaModel import Turma
 from model.turmaDAO import TurmaDAO
 
+
 class TurmaCtrl:
 
-    def salvarAtualizarTurma(self, id=None, nome='', turno=''):
+    def salvarAtualizarTurma(self, id=None, nome="", turno=""):
         if len(nome) > 3:
             inseriuAtualizou = False
-            turma = Turma(nome=nome, turno=turno)
+            turma = Turma(nome=nome, turno=turno);
             dao = TurmaDAO()
             if id:
                 turma.id = id
@@ -16,7 +17,7 @@ class TurmaCtrl:
             else:
                 inseriuAtualizou = dao.inserirTurma(turma)
             if inseriuAtualizou:
-                return "A turma não pode ser inserida com sucesso!!"
+                return "Turma inserida ou atualizada com sucesso!!!"
             else:
                 return "A turma não pode ser inserida ou atualizada!"
         else:
@@ -32,12 +33,13 @@ class TurmaCtrl:
 
     def buscarTurma(self, id="", inicio=0, quant=10):
         dao = TurmaDAO()
-        res = ''
+        res = ""
         if id != "":
             res = dao.buscarTurma(id)
         else:
-            res = dao.buscarTurmas(inicio=inicio,quant=quant)
-        itens =[]
+            res = dao.buscarTurmas(inicio=inicio, quant=quant)
+        itens = []
+
         if type(res) is Turma:
             minhaturma = []
             minhaturma.append(self._criarLabel(res.id, 0.2))
@@ -50,15 +52,15 @@ class TurmaCtrl:
         if type(res) is list:
             for turma in res:
                 minhaturma = []
-                minhaturma.append(self.criarLabel(turma.id, 0.2))
-                minhaturma.append(self.criarLabel(turma.nome, 0.6))
-                minhaturma.append(self.criarLabel(turma.turno, 0.2))
-                minhaturma.append(self.criarBotao("Atualizar", turma.id))
-                minhaturma.append(self.criarBotao("Excluir", turma.id))
+                minhaturma.append(self._criarLabel(turma.id, 0.2))
+                minhaturma.append(self._criarLabel(turma.nome, 0.6))
+                minhaturma.append(self._criarLabel(turma.turno, 0.2))
+                minhaturma.append(self._criarBotao("Atualizar", turma.id))
+                minhaturma.append(self._criarBotao("Excluir", turma.id))
                 itens.append(minhaturma)
         return itens
 
-    def _criarLabel(self, texto,tam):
+    def _criarLabel(self, texto, tam):
         label = Label()
         label.text = str(texto)
         label.size_hint_y = None
@@ -69,7 +71,7 @@ class TurmaCtrl:
     def _criarBotao(self, texto, id):
         botao = Button()
         botao.text = texto
-        botao.id = 'bt'+str(id)
+        botao.id = "bt" + str(id)
         botao.font_size = '10sp'
         botao.size_hint_y = None
         botao.height = '30dp'

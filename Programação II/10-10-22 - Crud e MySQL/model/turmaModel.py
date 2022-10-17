@@ -4,11 +4,11 @@ class Turma:
     """
     __slots__ = (
         '_id',
-        'nome',
+        '_nome',
         '_turno'
     )
 
-    def __init__(self, id=None, nome='', turno=''):
+    def __init__(self, id=None, nome="", turno=""):
         self.id = id
         self.nome = nome
         self.turno = turno

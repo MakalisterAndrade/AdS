@@ -1,6 +1,7 @@
 from model.conexaoDB import Conexaodb
 from model.turmaModel import Turma
 
+
 class TurmaDAO:
     __slots__ = (
         '_con'
@@ -13,45 +14,44 @@ class TurmaDAO:
         """
         Adiciona uma turma ao banco de dados
         :param turma: Espera um objeto do tipo turma
-        :return: True caso a turma seja adicionada e False caso contrário
+        :return: True caso a turma seja adicionada e False caso contrario
         """
         sql = "INSERT INTO Turma(nome,turno) VALUES (?,?);"
         valores = (turma.nome, turma.turno)
-        res = Conexaodb.executarSql(sql,valores)
+        res = Conexaodb.executarSql(sql, valores)
         return res == 1
 
     def atualizarTurma(self, turma):
         """
         Atualiza uma turma no banco de dados
-        :param turma:  Espera um objeto do tipo turma
-        :return:  True caso a turma seja atualizada e False caso contrário
+        :param turma: Espera um objeto do tipo turma
+        :return: True caso a turma seja atualizada e False caso contrario
         """
         sql = "UPDATE Turma SET nome=?, turno=? WHERE id=?;"
         valores = (turma.nome, turma.turno, turma.id)
         res = Conexaodb.executarSql(sql, valores)
         return res == 1
 
-
     def excluirTurma(self, id):
         """
         Exclui uma turma do banco de dados
-        :param id: Espera o id(string) da turma a ser excuída
-        :return: True caso a turma seja excluida e False caso contrário
+        :param id: Espera o id(string) da turma a ser excluída
+        :return: True caso a turma seja excluída e False caso contrario
         """
-        sql = "DELETE FROM turma WHERE id=" + str(id) +";"
+        sql = "DELETE FROM turma WHERE id = " + str(id)
         cursor = self._con.cursor()
         cursor.execute(sql)
         self._con.commit()
         res = cursor.rowcount
         return res == 1
 
-
     def buscarTurma(self, id):
         """
         Busca uma turma no banco de dados
-        :param id:  Espera o id da turma a ser buscada
+        :param id: Espera o id da turma a ser buscada
         :return: A turma de acordo com o id informado
         """
+
         try:
             sql = "SELECT id,nome,turno FROM turma WHERE id =" + str(id) + ";"
             cursor = self._con.cursor()
@@ -65,8 +65,8 @@ class TurmaDAO:
 
     def buscarTurmaPorNome(self, nome):
         """
-        Busca turma no banco de dados pelo seu nome
-        :param nome:  Espera o nome da turma a ser buscada
+        Busca uma turma no banco de dados pelo seu nome
+        :param nome: Espera o nome da turma a ser buscada
         :return: A turma de acordo com o nome informado
         """
         try:
@@ -83,26 +83,24 @@ class TurmaDAO:
     def buscarTurmas(self, inicio=0, quant=100):
         """
         Busca as turmas do banco de dados
-        :param inicio:
         :param quant: Espera a quantidade de turmas a serem buscadas
         :return: diversas Turmas de acordo com a quantidade informada
         """
+
         turmas = []
         try:
-            sql =  "SELECT id,nome,turno FROM turma"
-            #sql += "LIMIT" + str(inicio)
-            #sql += "," + str(quant)+";"
+            sql = "SELECT id,nome,turno FROM turma"
             cursor = self._con.cursor()
             cursor.execute(sql)
             res = cursor.fetchmany(quant)
             turmas = self._montarResultado(res)
             return turmas
         except Exception as e:
-            print(e)
             return turmas
 
-    def montarResultado(self, res):
+    def _montarResultado(self, res):
         turmas = []
+
         for linha in res:
             turma = Turma(linha[0], linha[1], linha[2])
             turmas.append(turma)
