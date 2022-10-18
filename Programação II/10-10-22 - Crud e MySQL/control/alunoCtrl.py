@@ -40,24 +40,30 @@ class AlunoCtrl:
             res = dao.buscarAlunos(inicio=inicio, quant=quant)
         itens = []
 
-        if type(res) is Turma:
-            minhaturma = []
-            minhaturma.append(self._criarLabel(res.id, 0.2))
-            minhaturma.append(self._criarLabel(res.nome, 0.6))
-            minhaturma.append(self._criarLabel(res.turno, 0.2))
-            minhaturma.append(self._criarBotao("Atualizar", res.id))
-            minhaturma.append(self._criarBotao("Excluir", res.id))
-            itens.append(minhaturma)
+        if type(res) is Aluno:
+            meusalunos = []
+            meusalunos.append(self._criarLabel(res.id, 0.2))
+            meusalunos.append(self._criarLabel(res.nome, 0.6))
+            meusalunos.append(self._criarLabel(res.cpf, 0.2))
+            meusalunos.append(self._criarLabel(res.matricula, 0.2))
+            meusalunos.append(self._criarLabel(res.dataNasc, 0.2))
+            meusalunos.append(self._criarLabel(res.turma, 0.2))
+            meusalunos.append(self._criarBotao("Atualizar", res.id))
+            meusalunos.append(self._criarBotao("Excluir", res.id))
+            itens.append(meusalunos)
 
         if type(res) is list:
-            for turma in res:
-                minhaturma = []
-                minhaturma.append(self._criarLabel(turma.id, 0.2))
-                minhaturma.append(self._criarLabel(turma.nome, 0.6))
-                minhaturma.append(self._criarLabel(turma.turno, 0.2))
-                minhaturma.append(self._criarBotao("Atualizar", turma.id))
-                minhaturma.append(self._criarBotao("Excluir", turma.id))
-                itens.append(minhaturma)
+            for aluno in res:
+                meusalunos = []
+                meusalunos.append(self._criarLabel(aluno.id, 0.2))
+                meusalunos.append(self._criarLabel(aluno.nome, 0.6))
+                meusalunos.append(self._criarLabel(aluno.cpf, 0.2))
+                meusalunos.append(self._criarLabel(aluno.matricula, 0.2))
+                meusalunos.append(self._criarLabel(aluno.dataNasc, 0.2))
+                meusalunos.append(self._criarLabel(aluno.turma, 0.2))
+                meusalunos.append(self._criarBotao("Atualizar", aluno.id))
+                meusalunos.append(self._criarBotao("Excluir", aluno.id))
+                itens.append(meusalunos)
         return itens
 
     def _criarLabel(self, texto, tam):
