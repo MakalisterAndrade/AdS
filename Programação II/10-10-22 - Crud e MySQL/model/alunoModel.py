@@ -1,19 +1,21 @@
-from turmaModel import Turma
 class Aluno:
     """
-    Classe base de alunos da Turma
+    Classe base de Aluno
     """
-    __slots__=(
-        '_id','_nome','_matricula','_cpf','_dataNasc','_turma'
+    __slots__ = (
+        '_id',
+        '_nome',
+        '_dt_nasc',
+        '_renda_familiar',
+        '_turma'
     )
 
-    def __int__(self, id=None, nome="", matricula=str, cpf=str, dataNasc=str, turma=''):
+    def __init__(self, id=None, nome="", dt_nasc="", renda_familiar="", turma=""):
         self.id = id
         self.nome = nome
-        self.matricula = matricula
-        self.cpf = cpf
-        self.dataNasc = dataNasc
-        self.turma = Turma.id
+        self.dt_nasc = dt_nasc
+        self.renda_familiar = renda_familiar
+        self.turma = turma
 
     @property
     def id(self):
@@ -32,28 +34,20 @@ class Aluno:
         self._nome = nome
 
     @property
-    def matricula(self):
-        return self._matricula
+    def dt_nasc(self):
+        return self._dt_nasc
 
-    @matricula.setter
-    def matrticula(self, matricula):
-        self._matricula = matricula
-
-    @property
-    def cpf(self):
-        return self._cpf
-
-    @cpf.setter
-    def cpf(self, cpf):
-        self._cpf = cpf
+    @dt_nasc.setter
+    def dt_nasc(self, dt):
+        self._dt_nasc = dt
 
     @property
-    def dataNasc(self):
-        return self._dataNasc
+    def renda_familiar(self):
+        return self._renda_familiar
 
-    @dataNasc.setter
-    def dataNasc(self, dataNasc):
-        self._dataNasc = dataNasc
+    @renda_familiar.setter
+    def renda_familiar(self, renda):
+        self._renda_familiar = renda
 
     @property
     def turma(self):
