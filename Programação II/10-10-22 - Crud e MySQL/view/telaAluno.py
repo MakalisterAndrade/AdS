@@ -20,7 +20,7 @@ class ViewAluno:
             if tela.ids.btCadAtual.text == "Excluir":
                 result = control.excluirAluno(idAluno)
             else:
-                result = control.salvarAtualizarAluno(id=idAluno, matricula=matricula, cpf=cpf, dataNasc=dataNasc, turma=turma)
+                result = control.salvarAtualizarAluno(id=idAluno, nome=nome, dt_nasc=dt_nasc, renda_familiar=renda_familiar, turma=turma)
 
             self._popJanela(result)
             self._limparTela(tela)
@@ -41,7 +41,7 @@ class ViewAluno:
             tela.gridlistar.add_widget(c)
 
     def buscaTurmas(self):
-        control = TurmaCtrl()
+        control = AlunoCtrl()
         tela = self._gerencTela.get_screen("ListarTurmas")
         idPesq = tela.inputid.text
         resultado = control.buscarTurma(id=idPesq)
@@ -56,7 +56,7 @@ class ViewAluno:
         turma = []
         if hasattr(botao, 'id'):
             id = str(botao.id).replace("bt", "")
-            control = TurmaCtrl()
+            control = AlunoCtrl()
             turma = control.buscarTurma(id=id)
         telaCad = self._gerencTela.get_screen("CadastroTurma")
         for t in turma:
