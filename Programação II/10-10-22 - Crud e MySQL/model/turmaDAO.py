@@ -96,7 +96,6 @@ class TurmaDAO:
             turmas = self._montarResultado(res)
             return turmas
         except Exception as e:
-            print(str(e))
             return turmas
 
     def _montarResultado(self, res):

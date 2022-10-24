@@ -8,7 +8,7 @@ kivy.require('2.1.0')
 __version__ = '0.1'
 
 
-class exemploCrud(App):
+class exemplo(App):
     def build(self):
         kivy.config.Config.set('graphics', 'resizable', False)
         self.root = GerenciaTelas()
@@ -17,4 +17,4 @@ class exemploCrud(App):
 
 
 if __name__ == '__main__':
-    exemploCrud().run()
+    exemplo().run()

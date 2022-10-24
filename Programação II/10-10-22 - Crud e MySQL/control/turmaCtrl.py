@@ -6,7 +6,7 @@ from model.turmaDAO import TurmaDAO
 
 class TurmaCtrl:
 
-    def salvarAtualizarAluno(self, id=None, nome="", turno=""):
+    def salvarAtualizarTurma(self, id=None, nome="", turno=""):
         if len(nome) > 3:
             inseriuAtualizou = False
             turma = Turma(nome=nome, turno=turno);
@@ -66,11 +66,16 @@ class TurmaCtrl:
         label.size_hint_y = None
         label.size_hint_x = tam
         label.height = '30dp'
+        label.color = [0, 0, 0, .7]
         return label
 
     def _criarBotao(self, texto, id):
         botao = Button()
         botao.text = texto
+        botao.color = [0, 0, 0, 0]
+        botao.border = (0, 0, 0, 0)
+        #botao.background_color = [.93, .92, .55, .8]
+        botao.background_normal = 'bteditar.png' if texto=='Atualizar' else 'btexcluir.png'
         botao.id = "bt" + str(id)
         botao.font_size = '10sp'
         botao.size_hint_y = None
