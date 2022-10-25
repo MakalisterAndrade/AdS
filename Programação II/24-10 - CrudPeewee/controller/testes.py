@@ -11,6 +11,6 @@ texto = control.excluirTurma(2)
 print(texto)
 """
 
-turma = control.buscarTurmaNome('3º')
+turma = control.buscarTodasTurmas()
 
 print(turma)
