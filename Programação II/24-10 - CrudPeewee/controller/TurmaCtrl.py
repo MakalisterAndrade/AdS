@@ -36,6 +36,12 @@ class TurmaCtrl:
             print(str(e))
             return 'Não foi possível excuir a turma, parceiro.'
 
+    def _montarTurma(self, turma):
+        return {
+            "id": turma.id,
+            "nome": turma.nome,
+            "turno": turma.turno}
+
     def buscarTurmaId(self, id):
         """
         Método que busca turma pelo id passado
@@ -44,12 +50,7 @@ class TurmaCtrl:
         """
         try:
             turma = Turma.get_by_id(id)
-            turmadict = {
-                "id": turma.id,
-                "nome": turma.nome,
-                "turno": turma.turno
-            }
-            return turmadict
+            return self._montarTurma(turma)
         except Exception as e:
             print(str(e))
             return {"erro": "Turma não encontrada!"}
@@ -62,12 +63,22 @@ class TurmaCtrl:
         """
         try:
             turma = Turma.get(nome=nome)
-            turmadict = {
-                "id": turma.id,
-                "nome": turma.nome,
-                "turno": turma.turno
-            }
-            return turmadict
+            return self._montarTurma(turma)
         except Exception as e:
             print(str(e))
             return {"erro": "Turma não encontrada!"}
+
+    def buscarTodasTurmas(self):
+        """
+        busca todas as turmas do banco
+        :return: List com dicts de dados das turmas
+        """
+        turmalist = []
+        try:
+            turmas = Turma.select()
+            for turma in turmas:
+                turmalist.append(self._montarTurma(turma))
+            return turmalist
+        except Exception as e:
+            print(str(e))
+            return [{"Erro": "Não foi possível realizar a busca!"}]
