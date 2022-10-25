@@ -37,5 +37,37 @@ class TurmaCtrl:
             return 'Não foi possível excuir a turma, parceiro.'
 
     def buscarTurmaId(self, id):
+        """
+        Método que busca turma pelo id passado
+        :param id: Integer com id da turma a ser procurada
+        :return: Dict com os dados da turma ou com erro
+        """
         try:
             turma = Turma.get_by_id(id)
+            turmadict = {
+                "id": turma.id,
+                "nome": turma.nome,
+                "turno": turma.turno
+            }
+            return turmadict
+        except Exception as e:
+            print(str(e))
+            return {"erro": "Turma não encontrada!"}
+
+    def buscarTurmaNome(self, nome):
+        """
+        Método que busca turma pelo nome passado
+        :param nome: Str com nome da turma a ser procurada
+        :return: Dict com os dados da turma ou com erro
+        """
+        try:
+            turma = Turma.get(nome=nome)
+            turmadict = {
+                "id": turma.id,
+                "nome": turma.nome,
+                "turno": turma.turno
+            }
+            return turmadict
+        except Exception as e:
+            print(str(e))
+            return {"erro": "Turma não encontrada!"}
