@@ -13,7 +13,7 @@ class BaseModel(peewee.Model): #Herda do peewee ferramentas e packs para cone]ao
         database = MySQLConnectorDatabase(
             'escolapeewee',
             user='root',
-            password='',
+            password='root',
             port='3306',
             charset='utf8mb4' #Não obrigatório, boa prática para definir os caracteres aceitos no banco
         )
