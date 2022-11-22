@@ -139,3 +139,4 @@ class AlunoCtrl:
         for turma in turmasbanco:
             turmas.append({"id": turma.id, "nome": turma.nome})
         return turmas
+
