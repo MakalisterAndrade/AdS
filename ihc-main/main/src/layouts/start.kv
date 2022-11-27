@@ -1,0 +1,26 @@
+<StartScreen>:
+
+    name: "start"
+    MDBoxLayout:
+        id: start_box
+        orientation: "vertical"
+
+        MDTopAppBar:
+            id: toolbar
+            title: "Estoque"
+            right_action_items: [["magnify", lambda x: app.search()]]
+
+        MDScrollView:
+            id: scroll
+            MDList:
+                id: list
+
+    MDBoxLayout:
+        padding: 35
+        orientation: "vertical"
+
+        MDFloatingActionButton:
+            icon: "plus"
+            md_bg_color: app.theme_cls.primary_color
+            pos_hint: {"right": 0.99}
+            on_press: root.manager.current = "edit"

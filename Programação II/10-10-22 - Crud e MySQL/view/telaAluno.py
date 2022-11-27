@@ -1,7 +1,7 @@
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 
-from control.alunoCtrl import AlunoCtrl
+#from control.alunoCtrl import AlunoCtrl
 
 
 class ViewAluno:
