@@ -2,7 +2,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from peewee import ModelSelect
 
-from model.models import Participante
+from model.models import Participante, Atividade
 
 class ParticipanteCtrl:
 
@@ -89,3 +89,10 @@ class ParticipanteCtrl:
                        height='30dp',
                        size_hint_x = .1)
         return botao
+
+    def buscarAtividades(self):
+        Atividadebanco = Atividade.select()
+        atividades = []
+        for atividade in Atividadebanco:
+            atividade.append({"id": atividade.id, "descricao": atividade.descricao})
+        return atividades
