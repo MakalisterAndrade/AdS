@@ -5,7 +5,7 @@ from playhouse.mysql_ext import MySQLConnectorDatabase
 class BaseModel(peewee.Model):
 
     class Meta:
-        database = MySQLConnectorDatabase('bdfinal', user='root', password='root',
+        database = MySQLConnectorDatabase('bdfinal', user='root', password='',
                                            host='localhost', port=3306, charset='utf8mb4')
 
 class Atividade(BaseModel):
