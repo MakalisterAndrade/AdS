@@ -2,7 +2,7 @@ from controller.participantectrl import ParticipanteCtrl
 from models import *
 
 #Salvar participante
-participante = Participante.get(nome='José')
+participante = Participante('José','ifro','setor8','69959595','jose@gmail', 'conveniado','palestra')
 
 #aluno = Aluno(nome='Fulano de Tal', dt_nasc='2010-02-12', renda_fam= 5200.00, turma=turma)
 #print(aluno.save())
